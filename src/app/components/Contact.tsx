@@ -4,9 +4,8 @@ import { useRef } from 'react';
 import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' }
+  { icon: Github, label: 'GitHub', href: 'https://github.com/krsrcio' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/kristinecastres/' },
 ];
 
 export function Contact() {
