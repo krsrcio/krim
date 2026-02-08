@@ -15,7 +15,7 @@ const projects = [
     description: 'PetPal is a fun and interactive 2D 8-bit mobile game where players adopt their own virtual pet, take care of it. By feeding, grooming, playing, and keeping their pet happy and healthy.',
     tech: ['Unity', 'MySQL', 'C#'],
     github: 'https://github.com/krsrcio/Petpal',
-    live: '#petpal'
+    live: '#'
   },
   {
     title: 'DermaScan',
@@ -34,11 +34,7 @@ const projects = [
   
 ];
 
-type ProjectsProps = {
-  onOpenPetPal?: () => void;
-};
-
-export function Projects({ onOpenPetPal }: ProjectsProps) {
+export function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -111,12 +107,6 @@ export function Projects({ onOpenPetPal }: ProjectsProps) {
                     href={project.live}
                     className="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors duration-300"
                     aria-label={`View ${project.title} live site`}
-                    onClick={(event) => {
-                      if (project.title === 'PetPal' && onOpenPetPal) {
-                        event.preventDefault();
-                        onOpenPetPal();
-                      }
-                    }}
                   >
                     <ExternalLink size={20} />
                     <span className="text-sm">Live</span>

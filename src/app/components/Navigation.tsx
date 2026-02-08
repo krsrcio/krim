@@ -5,16 +5,11 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Pet Pal", href: "#petpal" },
   // { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
-type NavigationProps = {
-  showPetPal?: boolean;
-};
-
-export function Navigation({ showPetPal = false }: NavigationProps) {
+export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -62,9 +57,7 @@ export function Navigation({ showPetPal = false }: NavigationProps) {
           </a>
 
           <div className="hidden md:flex items-center gap-8">
-            {navItems
-              .filter((item) => showPetPal || item.href !== "#petpal")
-              .map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.a
                 key={item.label}
                 href={item.href}
