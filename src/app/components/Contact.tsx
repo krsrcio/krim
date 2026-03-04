@@ -42,7 +42,7 @@ export function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
-            href="mailto:alex.rivera@example.com"
+            href="mailto:kristinecastres10@gmail.com"
             className="inline-flex items-center gap-3 px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-lg group"
           >
             <Mail size={20} className="group-hover:scale-110 transition-transform duration-300" />

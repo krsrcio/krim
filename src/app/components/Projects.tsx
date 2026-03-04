@@ -7,29 +7,36 @@ const projects = [
     title: 'Baskit',
     description: 'Baskit is a fast and convenient service that lets busy users create a grocery list, generate a code, and have a trusted Tagabili shop and prepare their items for easy pickup at a branch.',
     tech: ['Jetpack Compose', 'PHP', 'Kotlin'],
-    github: 'https://github.com/krsrcio/Baskit',
-    live: '#'
+    // github: 'https://github.com/krsrcio/Baskit',
+    // live: '#'
   },
   {
     title: 'PetPal',
     description: 'PetPal is a fun and interactive 2D 8-bit mobile game where players adopt their own virtual pet, take care of it. By feeding, grooming, playing, and keeping their pet happy and healthy.',
     tech: ['Unity', 'MySQL', 'C#'],
-    github: 'https://github.com/krsrcio/Petpal',
-    live: '#'
+    // github: 'https://github.com/krsrcio/Petpal',
+    // live: '#'
   },
   {
     title: 'DermaScan',
     description: 'DermaScan is a mobile application that allows users to take photos of their skin and get an analysis of potential skin conditions using AI-powered image recognition.',
     tech: ['React Native', 'Python', 'TensorFlow', 'Flutter'],
-    github: 'https://github.com/krsrcio/dermascan',
-    live: '#'
+    // github: 'https://github.com/krsrcio/dermascan',
+    // live: '#'
   },
   {
     title: 'Echoes of the lighthouse',
     description: 'A narrative-driven adventure game set in a mysterious lighthouse. Players explore the environment, solve puzzles, and uncover the secrets of the lighthouse through immersive storytelling and atmospheric design.',
     tech: ['Unity', 'C#'],
-    github: '#',
-    live: '#'
+    // github: '#',
+    // live: '#'
+  },
+  {
+    title: 'RxGuard',
+    description: 'RxGuard is a mobile application that helps users manage their medications by providing reminders, tracking adherence, and offering insights into their medication schedules.',
+    tech: ['Next.js', 'Firebase', 'Redux', 'PostgreSQL', 'Prisma'],
+    // github: 'https://github.com/krsrcio/rxguard',
+    // live: '#'
   },
   
 ];
@@ -94,7 +101,7 @@ export function Projects() {
                     ))}
                   </div>
                 </div>
-                <div className="flex gap-4 md:flex-col">
+                {/* <div className="flex gap-4 md:flex-col">
                   <a
                     href={project.github}
                     className="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors duration-300"
@@ -111,7 +118,7 @@ export function Projects() {
                     <ExternalLink size={20} />
                     <span className="text-sm">Live</span>
                   </a>
-                </div>
+                </div> */}
               </div>
             </motion.article>
           ))}
