@@ -1,6 +1,5 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Download, ExternalLink, Github } from 'lucide-react';
 
 const projects = [
   {
@@ -52,7 +51,6 @@ export function Projects() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div>
             <p className="text-sm tracking-[0.3em] uppercase text-neutral-400 mb-4">SELECTED WORKS</p>
@@ -60,15 +58,6 @@ export function Projects() {
               Featured projects.
             </h2>
           </div>
-          <a
-            href="/resume.pdf"
-            download
-            className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase border border-neutral-300 px-5 py-3 text-neutral-700 hover:text-black hover:border-black transition-colors duration-300"
-            aria-label="Download resume"
-          >
-            <Download size={18} />
-            Download resume
-          </a>
         </motion.div>
 
         <div className="h-16" />

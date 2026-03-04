@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
+import { Download } from 'lucide-react';
 
 export function About() {
   const ref = useRef(null);
@@ -38,6 +39,15 @@ export function About() {
               When I'm not coding, you'll find me exploring design trends, contributing to open source,
               or experimenting with generative art and creative coding.
             </p>
+            <a
+              href="/resume.pdf"
+              download
+              className="mt-8 inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase border border-neutral-300 px-5 py-3 text-neutral-700 hover:text-black hover:border-black transition-colors duration-300"
+              aria-label="Download resume"
+            >
+              <Download size={18} />
+              Download resume
+            </a>
           </motion.div>
 
           <motion.div
