@@ -14,11 +14,26 @@ export function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
+          className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-neutral-400 mb-4">ABOUT ME</p>
-          <h2 className="text-4xl md:text-6xl tracking-tight mb-12 text-black" style={{ fontWeight: 700 }}>
-            Building with purpose.
-          </h2>
+          <div>
+            <p className="text-sm tracking-[0.3em] uppercase text-neutral-400 mb-4">ABOUT ME</p>
+            <h2 className="text-4xl md:text-6xl tracking-tight text-black" style={{ fontWeight: 700 }}>
+              Building with purpose.
+            </h2>
+          </div>
+          <motion.a
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-2 border border-neutral-300 bg-white/70 px-5 py-3 text-sm tracking-[0.2em] uppercase text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-black hover:text-black hover:shadow-[0_14px_30px_rgba(0,0,0,0.18)]"
+            aria-label="Download resume"
+          >
+            <Download size={18} />
+            Download resume
+          </motion.a>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">
@@ -39,15 +54,6 @@ export function About() {
               When I'm not coding, you'll find me exploring design trends, contributing to open source,
               or experimenting with generative art and creative coding.
             </p>
-            <a
-              href="/resume.pdf"
-              download
-              className="mt-8 inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase border border-neutral-300 px-5 py-3 text-neutral-700 hover:text-black hover:border-black transition-colors duration-300"
-              aria-label="Download resume"
-            >
-              <Download size={18} />
-              Download resume
-            </a>
           </motion.div>
 
           <motion.div
