@@ -1,6 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Download, ExternalLink, Github } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 const projects = [
   {
