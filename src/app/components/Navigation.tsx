@@ -102,7 +102,7 @@ export function Navigation() {
               className="text-xl tracking-tight text-black"
               style={{ fontWeight: 700 }}
             >
-              kay.
+              krim.
             </a>
 
             <div className="hidden md:flex items-center gap-8">
@@ -177,7 +177,7 @@ export function Navigation() {
               style={{ fontWeight: 700 }}
               onClick={() => setIsMenuOpen(false)}
             >
-              kay.
+              krim.
             </a>
             <button
               type="button"
