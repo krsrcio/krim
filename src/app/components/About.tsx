@@ -63,7 +63,7 @@ export function About() {
                   animate: isInView ? { opacity: 1, y: 0 } : {},
                   transition: { delay: 0.2, duration: 0.5 },
                 })}
-            href="/resume.pdf"
+            href="/Kristine Castres.pdf"
             download
             className="inline-flex items-center gap-2 border border-neutral-300 bg-white/70 px-5 py-3 text-sm uppercase tracking-[0.2em] text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-black hover:text-black hover:shadow-[0_14px_30px_rgba(0,0,0,0.18)]"
             aria-label="Download resume"
@@ -76,7 +76,7 @@ export function About() {
         <div className="grid gap-12 md:grid-cols-2 md:gap-20">
           <motion.div {...leftColumnRevealProps}>
             <p className="mb-6 text-lg leading-relaxed text-neutral-700">
-              I&apos;m a Computer Science student at UPang who enjoys turning
+              I&apos;m a Information Technology student at UPang who enjoys turning
               ideas into practical web, mobile, and game experiences. I combine
               thoughtful interface design with the technical work needed to
               make a product function well.

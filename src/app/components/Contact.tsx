@@ -13,6 +13,12 @@ const socialLinks = [
   },
 ];
 
+const opportunities = [
+  "Internships",
+  "Junior Front-End",
+  "Mobile & Game Development",
+];
+
 export function Contact() {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -65,10 +71,30 @@ export function Contact() {
           <motion.p
             {...fadeRevealProps}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="mx-auto mb-12 mt-4 max-w-2xl text-sm uppercase tracking-[0.16em] text-neutral-300"
+            className="mx-auto mt-4 max-w-2xl text-sm uppercase tracking-[0.16em] text-neutral-300"
           >
             Open to internships and junior developer opportunities.
           </motion.p>
+
+          <motion.div
+            {...fadeRevealProps}
+            transition={{ delay: 0.35, duration: 0.6 }}
+            className="mx-auto mb-12 mt-6 max-w-3xl"
+          >
+            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-neutral-500">
+              Available for
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {opportunities.map((opportunity) => (
+                <span
+                  key={opportunity}
+                  className="border border-neutral-700 px-3 py-2 text-xs uppercase tracking-[0.12em] text-neutral-300"
+                >
+                  {opportunity}
+                </span>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.a
             {...(prefersReducedMotion
