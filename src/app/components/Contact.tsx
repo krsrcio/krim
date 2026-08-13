@@ -56,10 +56,18 @@ export function Contact() {
           <motion.p
             {...fadeRevealProps}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-neutral-400"
+            className="mx-auto max-w-2xl text-lg leading-relaxed text-neutral-400"
           >
             I&apos;m always interested in hearing about new projects, creative
             ideas, or opportunities to be part of your vision.
+          </motion.p>
+
+          <motion.p
+            {...fadeRevealProps}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mx-auto mb-12 mt-4 max-w-2xl text-sm uppercase tracking-[0.16em] text-neutral-300"
+          >
+            Open to internships and junior developer opportunities.
           </motion.p>
 
           <motion.a
@@ -114,7 +122,7 @@ export function Contact() {
             className="mt-24 border-t border-neutral-800 pt-12"
           >
             <p className="text-sm text-neutral-500">
-              © 2026 krim. Designed and built with purpose.
+              &copy; 2026 krim. Designed and built with purpose.
             </p>
           </motion.div>
         </motion.div>

@@ -52,7 +52,7 @@ export function About() {
               className="text-4xl tracking-tight text-black md:text-6xl"
               style={{ fontWeight: 700 }}
             >
-              Building with purpose.
+              Building useful experiences.
             </h2>
           </div>
           <motion.a
@@ -69,27 +69,29 @@ export function About() {
             aria-label="Download resume"
           >
             <Download size={18} />
-            Download resume
+            See resume
           </motion.a>
         </motion.div>
 
         <div className="grid gap-12 md:grid-cols-2 md:gap-20">
           <motion.div {...leftColumnRevealProps}>
             <p className="mb-6 text-lg leading-relaxed text-neutral-700">
-              I'm a developer who finds beauty in well-structured code and
-              thoughtfully designed interfaces. My journey spans from computer
-              science fundamentals to the creative exploration of emerging
-              technologies.
+              I&apos;m a Computer Science student at UPang who enjoys turning
+              ideas into practical web, mobile, and game experiences. I combine
+              thoughtful interface design with the technical work needed to
+              make a product function well.
             </p>
             <p className="mb-6 text-lg leading-relaxed text-neutral-700">
-              I believe great products live at the intersection of technical
-              excellence and human-centered design. Every line of code is an
-              opportunity to create something meaningful.
+              Through projects such as Baskit, PetPal, and DermaScan, I&apos;ve
+              explored full-stack development, mobile apps, AI-assisted
+              features, and interactive gameplay. I especially enjoy shaping
+              clear user flows and building interfaces that feel simple to use.
             </p>
             <p className="text-lg leading-relaxed text-neutral-700">
-              When I'm not coding, you'll find me exploring design trends,
-              contributing to open source, or experimenting with generative art
-              and creative coding.
+              I&apos;m working toward internship and junior opportunities in
+              software, front-end or full-stack, and game development. I like
+              projects that solve everyday problems and create memorable user
+              experiences.
             </p>
           </motion.div>
 
@@ -104,7 +106,7 @@ export function About() {
               <ul className="space-y-2 text-neutral-600">
                 <li className="flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  Full-Stack Web Development
+                  Front-End & Full-Stack Development
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-black" />
@@ -112,11 +114,11 @@ export function About() {
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  Creative Technology & Interaction Design
+                  Mobile & Game Development
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  Performance Optimization
+                  AI-Assisted Mobile Experiences
                 </li>
               </ul>
             </div>
@@ -129,9 +131,9 @@ export function About() {
                 Currently
               </h3>
               <p className="leading-relaxed text-neutral-600">
-                Exploring the intersection of AI and creative coding while
-                building scalable web applications. Always learning, always
-                creating.
+                Building a stronger portfolio across web, mobile, and game
+                development while preparing for internship and junior developer
+                opportunities.
               </p>
             </div>
           </motion.div>

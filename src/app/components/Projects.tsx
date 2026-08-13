@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Download } from 'lucide-react';
+
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const projects = [
   {
@@ -42,16 +43,18 @@ const projects = [
 ];
 
 export function Projects() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const shouldAnimate = !prefersReducedMotion;
 
   return (
     <section id="projects" ref={ref} className="min-h-screen flex items-center px-6 py-24 bg-neutral-50">
       <div className="max-w-6xl mx-auto w-full">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={shouldAnimate ? { opacity: 0, y: 40 } : false}
+          animate={shouldAnimate && isInView ? { opacity: 1, y: 0 } : undefined}
+          transition={shouldAnimate ? { duration: 0.8 } : undefined}
           className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div>
@@ -60,15 +63,6 @@ export function Projects() {
               Featured projects.
             </h2>
           </div>
-          <a
-            href="/resume.pdf"
-            download
-            className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase border border-neutral-300 px-5 py-3 text-neutral-700 hover:text-black hover:border-black transition-colors duration-300"
-            aria-label="Download resume"
-          >
-            <Download size={18} />
-            Download resume
-          </a>
         </motion.div>
 
         <div className="h-16" />
@@ -77,14 +71,18 @@ export function Projects() {
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="border border-neutral-200 p-8 md:p-10 hover:border-black transition-all duration-300 group bg-white"
+              initial={shouldAnimate ? { opacity: 0, y: 40 } : false}
+              animate={shouldAnimate && isInView ? { opacity: 1, y: 0 } : undefined}
+              transition={
+                shouldAnimate
+                  ? { duration: 0.6, delay: index * 0.1 }
+                  : undefined
+              }
+              className="group border border-neutral-200 bg-white p-8 transition-all duration-300 hover:border-black motion-reduce:transition-none md:p-10"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
                 <div className="flex-1">
-                  <h3 className="text-2xl md:text-3xl mb-4 text-black tracking-tight group-hover:text-neutral-700 transition-colors duration-300" style={{ fontWeight: 600 }}>
+                  <h3 className="mb-4 text-2xl tracking-tight text-black transition-colors duration-300 group-hover:text-neutral-700 motion-reduce:transition-none md:text-3xl" style={{ fontWeight: 600 }}>
                     {project.title}
                   </h3>
                   <p className="text-neutral-600 leading-relaxed mb-6">
@@ -94,7 +92,7 @@ export function Projects() {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={`${tech}-${techIndex}`}
-                        className="text-xs tracking-wider uppercase px-3 py-1.5 border border-neutral-200 text-neutral-600 group-hover:border-neutral-400 transition-colors duration-300"
+                        className="border border-neutral-200 px-3 py-1.5 text-xs uppercase tracking-wider text-neutral-600 transition-colors duration-300 group-hover:border-neutral-400 motion-reduce:transition-none"
                       >
                         {tech}
                       </span>
