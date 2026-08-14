@@ -76,7 +76,7 @@ export function About() {
         <div className="grid gap-12 md:grid-cols-2 md:gap-20">
           <motion.div {...leftColumnRevealProps}>
             <p className="mb-6 text-lg leading-relaxed text-neutral-700">
-              I&apos;m a Information Technology student at UPang who enjoys turning
+              I&apos;m an Information Technology student at PHINMA University of Pangasinan (UPANG) who enjoys turning
               ideas into practical web, mobile, and game experiences. I combine
               thoughtful interface design with the technical work needed to
               make a product function well.
@@ -128,12 +128,12 @@ export function About() {
                 className="mb-3 text-xl tracking-tight text-black"
                 style={{ fontWeight: 600 }}
               >
-                Currently
+                Currently Learning
               </h3>
               <p className="leading-relaxed text-neutral-600">
-                Building a stronger portfolio across web, mobile, and game
-                development while preparing for internship and junior developer
-                opportunities.
+                Deepening my practice with React and Next.js, mobile app
+                architecture, and Unity gameplay systems through hands-on
+                portfolio projects.
               </p>
             </div>
           </motion.div>

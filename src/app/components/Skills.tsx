@@ -22,6 +22,7 @@ const skills: SkillGroup[] = [
       "Java",
       "C++",
       "Dart",
+      "React Native",
     ],
   },
   {
