@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { AnimatedBackground } from "@/components/core/animated-background";
+import { ScrollProgress } from "@/components/core/scroll-progress";
 
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
@@ -19,13 +21,27 @@ export function Navigation() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    let frameId: number | null = null;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (frameId !== null) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+        frameId = null;
+      });
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () =>
+    return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -89,13 +105,14 @@ export function Navigation() {
     <>
       <motion.nav
         {...navMotionProps}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${
           isScrolled
-            ? "bg-white/80 backdrop-blur-md border-b border-neutral-200"
-            : "bg-transparent"
+            ? "border-neutral-200 bg-white/80 backdrop-blur-md"
+            : "border-transparent bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <ScrollProgress className="absolute inset-x-0 top-0 h-0.5 bg-black" />
+        <div className="mx-auto max-w-7xl px-5 py-4 sm:px-6 sm:py-6">
           <div className="flex items-center justify-between">
             <a
               href="#top"
@@ -105,29 +122,36 @@ export function Navigation() {
               krim.
             </a>
 
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  {...itemMotionProps}
-                  transition={{
-                    delay: index * 0.1,
-                    duration: 0.4,
-                  }}
-                  className="text-sm tracking-wide text-neutral-600 hover:text-black transition-colors duration-300 relative group"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-black group-hover:w-full transition-all duration-300" />
-                </motion.a>
-              ))}
+            <div className="hidden items-center md:flex">
+              <AnimatedBackground
+                className="rounded-md bg-neutral-100"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.3 }}
+                enableHover
+              >
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    data-id={item.label}
+                    {...itemMotionProps}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.4,
+                      ease: smoothEase,
+                    }}
+                    className="px-3 py-1.5 text-sm tracking-wide text-neutral-600 transition-colors duration-300 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </AnimatedBackground>
             </div>
 
             <motion.a
               {...ctaMotionProps}
               transition={{ delay: 0.5, duration: 0.4 }}
               href="#contact"
-              className="hidden md:inline-flex px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-sm"
+              className="hidden text-sm transition-colors duration-300 md:inline-flex md:border md:border-black md:px-6 md:py-2 md:text-black md:hover:bg-black md:hover:text-white"
               style={{ fontWeight: 500 }}
             >
               Let's Talk
@@ -135,7 +159,7 @@ export function Navigation() {
 
             <button
               type="button"
-              className="md:hidden inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white p-3 text-black shadow-sm transition-colors duration-300 hover:border-black"
+              className="inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white p-3 text-black shadow-sm transition-colors duration-300 hover:border-black md:hidden"
               onClick={() => setIsMenuOpen(true)}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
@@ -156,7 +180,7 @@ export function Navigation() {
       >
         <button
           type="button"
-          className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity ${
+          className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ease-out ${
             isMenuOpen ? "opacity-100" : "opacity-0"
           } ${prefersReducedMotion ? "duration-0" : "duration-300"}`}
           onClick={() => setIsMenuOpen(false)}
@@ -165,7 +189,7 @@ export function Navigation() {
 
         <aside
           id="mobile-navigation"
-          className={`absolute right-0 top-0 flex h-full w-[min(88vw,22rem)] flex-col border-l border-neutral-200 bg-white px-6 py-6 shadow-[0_18px_50px_rgba(0,0,0,0.12)] transition-transform ${
+          className={`absolute right-0 top-0 flex h-full w-[min(88vw,22rem)] flex-col border-l border-neutral-200 bg-white px-5 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.12)] transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-6 sm:py-6 will-change-transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } ${prefersReducedMotion ? "duration-0" : "duration-300"}`}
           aria-label="Mobile navigation"

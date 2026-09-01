@@ -7,10 +7,11 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 const lenisOptions: LenisOptions = {
   autoRaf: true,
   smoothWheel: true,
-  syncTouch: true,
+  syncTouch: false,
   anchors: true,
   stopInertiaOnNavigate: true,
-  lerp: 0.08,
+  lerp: 0.1,
+  wheelMultiplier: 0.9,
 };
 
 type SmoothScrollProps = PropsWithChildren;

@@ -50,20 +50,18 @@ const skills: SkillGroup[] = [
 const cardVariants = {
   hidden: (index: number) => ({
     opacity: 0,
-    y: 52,
-    x: index % 2 === 0 ? -28 : 28,
+    y: 28,
+    x: index % 2 === 0 ? -12 : 12,
     scale: 0.98,
-    filter: "blur(8px)",
   }),
   visible: (index: number) => ({
     opacity: 1,
     y: 0,
     x: 0,
     scale: 1,
-    filter: "blur(0px)",
     transition: {
       delay: index * 0.08,
-      duration: 0.75,
+      duration: 0.55,
       ease: smoothEase,
     },
   }),
@@ -153,14 +151,14 @@ export function Skills() {
     : {
         initial: { opacity: 0, y: 40 },
         animate: isInView ? { opacity: 1, y: 0 } : {},
-        transition: { duration: 0.8 },
+        transition: { duration: 0.6, ease: smoothEase },
       };
 
   return (
     <section
       id="skills"
       ref={ref}
-      className="flex min-h-screen items-center bg-white px-6 py-24"
+      className="flex min-h-screen items-center bg-white px-5 py-20 sm:px-6 sm:py-24"
     >
       <div className="mx-auto w-full max-w-6xl">
         <motion.div {...headingRevealProps}>
@@ -168,7 +166,7 @@ export function Skills() {
             SKILLS & TECHNOLOGY
           </p>
           <h2
-            className="mb-16 text-4xl tracking-tight text-black md:text-6xl"
+            className="mb-12 text-4xl leading-[1.05] tracking-tight text-black sm:mb-16 md:text-6xl"
             style={{ fontWeight: 700 }}
           >
             My toolkit.
@@ -177,51 +175,51 @@ export function Skills() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {skills.map((skillGroup, groupIndex) => (
-            <motion.div
-              key={skillGroup.category}
-              custom={groupIndex}
-              variants={cardVariants}
-              initial={shouldAnimate ? "hidden" : false}
-              whileInView={shouldAnimate ? "visible" : undefined}
-              whileHover={shouldAnimate ? "hover" : undefined}
-              viewport={{ once: true, amount: 0.35 }}
-              className="group relative overflow-hidden border border-neutral-200 bg-white p-8 shadow-[0_16px_40px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-black"
-            >
               <motion.div
-                variants={spotlightVariants}
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(circle at top right, rgba(0,0,0,0.08), transparent 46%)",
-                }}
-              />
-              <motion.div
-                variants={lineVariants}
-                className="absolute inset-x-0 top-0 h-px origin-left bg-black"
-              />
+                key={skillGroup.category}
+                custom={groupIndex}
+                variants={cardVariants}
+                initial={shouldAnimate ? "hidden" : false}
+                whileInView={shouldAnimate ? "visible" : undefined}
+                whileHover={shouldAnimate ? "hover" : undefined}
+                viewport={{ once: true, amount: 0.35 }}
+                className="group relative overflow-hidden border border-neutral-200 bg-white p-6 shadow-[0_16px_40px_rgba(0,0,0,0.04)] transition-colors duration-300 hover:border-black sm:p-8"
+              >
+                <motion.div
+                  variants={spotlightVariants}
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(circle at top right, rgba(0,0,0,0.08), transparent 46%)",
+                  }}
+                />
+                <motion.div
+                  variants={lineVariants}
+                  className="absolute inset-x-0 top-0 h-px origin-left bg-black"
+                />
 
-              <div className="relative z-10">
-                <motion.h3
-                  variants={titleVariants}
-                  className="mb-6 text-xl tracking-tight text-black"
-                  style={{ fontWeight: 600 }}
-                >
-                  {skillGroup.category}
-                </motion.h3>
-                <ul className="space-y-3">
-                  {skillGroup.items.map((skill, index) => (
-                    <motion.li
-                      key={skill}
-                      custom={index}
-                      variants={skillItemVariants}
-                      className="text-neutral-600 transition-colors duration-300"
-                    >
-                      {skill}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+                <div className="relative z-10">
+                  <motion.h3
+                    variants={titleVariants}
+                    className="mb-6 text-xl tracking-tight text-black"
+                    style={{ fontWeight: 600 }}
+                  >
+                    {skillGroup.category}
+                  </motion.h3>
+                  <ul className="space-y-3">
+                    {skillGroup.items.map((skill, index) => (
+                      <motion.li
+                        key={skill}
+                        custom={index}
+                        variants={skillItemVariants}
+                        className="text-neutral-600 transition-colors duration-300"
+                      >
+                        {skill}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
           ))}
         </div>
       </div>

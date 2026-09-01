@@ -2,7 +2,7 @@
 
 :root {
   --font-size: 16px;
-  --nav-offset: 6rem;
+  --nav-offset: 5rem;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -137,6 +137,13 @@
   html {
     font-size: var(--font-size);
     scroll-padding-top: var(--nav-offset);
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1 {
@@ -179,6 +186,12 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-offset: 6rem;
   }
 }
 

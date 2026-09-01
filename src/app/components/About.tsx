@@ -4,6 +4,8 @@ import { useRef } from "react";
 
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 export function About() {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -14,7 +16,7 @@ export function About() {
     : {
         initial: { opacity: 0, y: 40 },
         animate: isInView ? { opacity: 1, y: 0 } : {},
-        transition: { duration: 0.8 },
+        transition: { duration: 0.7, ease: smoothEase },
       };
 
   const leftColumnRevealProps = prefersReducedMotion
@@ -22,7 +24,7 @@ export function About() {
     : {
         initial: { opacity: 0, x: -20 },
         animate: isInView ? { opacity: 1, x: 0 } : {},
-        transition: { duration: 0.8, delay: 0.2 },
+        transition: { duration: 0.7, delay: 0.15, ease: smoothEase },
       };
 
   const rightColumnRevealProps = prefersReducedMotion
@@ -30,14 +32,14 @@ export function About() {
     : {
         initial: { opacity: 0, x: 20 },
         animate: isInView ? { opacity: 1, x: 0 } : {},
-        transition: { duration: 0.8, delay: 0.4 },
+        transition: { duration: 0.7, delay: 0.25, ease: smoothEase },
       };
 
   return (
     <section
       id="about"
       ref={ref}
-      className="flex min-h-screen items-center bg-neutral-50 px-6 py-24"
+      className="flex min-h-screen items-center bg-neutral-50 px-5 py-20 sm:px-6 sm:py-24"
     >
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
@@ -49,7 +51,7 @@ export function About() {
               ABOUT ME
             </p>
             <h2
-              className="text-4xl tracking-tight text-black md:text-6xl"
+              className="text-4xl leading-[1.05] tracking-tight text-black md:text-6xl"
               style={{ fontWeight: 700 }}
             >
               Building useful experiences.
@@ -61,11 +63,11 @@ export function About() {
               : {
                   initial: { opacity: 0, y: 16 },
                   animate: isInView ? { opacity: 1, y: 0 } : {},
-                  transition: { delay: 0.2, duration: 0.5 },
+                  transition: { delay: 0.15, duration: 0.45, ease: smoothEase },
                 })}
             href="/Kristine Castres.pdf"
             download
-            className="inline-flex items-center gap-2 border border-neutral-300 bg-white/70 px-5 py-3 text-sm uppercase tracking-[0.2em] text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-black hover:text-black hover:shadow-[0_14px_30px_rgba(0,0,0,0.18)]"
+            className="inline-flex items-center gap-2 border border-neutral-300 bg-white/70 px-5 py-3 text-sm uppercase tracking-[0.16em] text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-[transform,border-color,color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-black hover:text-black hover:shadow-[0_14px_30px_rgba(0,0,0,0.18)] sm:tracking-[0.2em]"
             aria-label="Download resume"
           >
             <Download size={18} />
