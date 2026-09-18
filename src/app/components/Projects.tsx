@@ -1,77 +1,12 @@
 import { motion, useInView } from 'motion/react';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Github, Play } from 'lucide-react';
 import { useRef } from 'react';
 
+import { projects } from '../data/projects';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { ExpandDetails } from './ExpandDetails';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
-
-type Project = {
-  title: string;
-  description: string;
-  role: string;
-  focus: string;
-  tech: string[];
-  github?: string;
-  image?: string;
-  imageAlt?: string;
-  imageBackground?: 'dark';
-};
-
-const projects: Project[] = [
-  {
-    title: 'Baskit',
-    description: 'Baskit is a fast and convenient service that lets busy users create a grocery list, generate a code, and have a trusted Tagabili shop and prepare their items for easy pickup at a branch.',
-    role: ' Full-stack developer, Mobile app designer',
-    focus: 'Grocery-list creation and branch pickup flow',
-    tech: ['Jetpack Compose', 'PHP', 'Kotlin'],
-    github: 'https://github.com/krsrcio/Baskit',
-    image: '/baskit_logo.png',
-    imageAlt: 'Baskit application logo',
-  },
-  {
-    title: 'PetPal',
-    description: 'PetPal is a fun and interactive 2D 8-bit mobile game where players adopt their own virtual pet, take care of it. By feeding, grooming, playing, and keeping their pet happy and healthy.',
-    role: 'Full-stack developer, Game designer',
-    focus: 'Virtual-pet care gameplay and player interaction',
-    tech: ['Unity', 'MySQL', 'C#'],
-    github: 'https://github.com/krsrcio/Petpal',
-    image: '/petpal.png',
-    imageAlt: 'PetPal virtual logo',
-  },
-  {
-    title: 'DermaScan',
-    description: 'DermaScan is a mobile application that allows users to take photos of their skin and get an analysis of potential skin conditions using AI-powered image recognition.',
-    role: 'Mobile app developer, Database manager',
-    focus: 'AI-assisted skin analysis from user-captured photos',
-    tech: ['React Native', 'Python', 'TensorFlow', 'Flutter'],
-    github: 'https://github.com/krsrcio/dermascan',
-    image: '/DermaScan.png',
-    imageAlt: 'DermaScan application logo',
-  },
-  {
-    title: 'Echoes of the lighthouse',
-    description: 'A narrative-driven adventure game set in a mysterious lighthouse. Players explore the environment, solve puzzles, and uncover the secrets of the lighthouse through immersive storytelling and atmospheric design.',
-    role: 'Front-end developer',
-    focus: 'Narrative exploration, puzzle design, and atmosphere',
-    tech: ['Unity', 'C#'],
-    github: 'https://github.com/krsrcio/echoes-of-the-lighthouse',
-    image: '/eofL.png',
-    imageAlt: 'Echoes of the lighthouse game logo',
-    imageBackground: 'dark',
-  },
-  {
-    title: 'RxGuard',
-    description: 'RxGuard is a mobile application that helps users manage their medications by providing reminders, tracking adherence, and offering insights into their medication schedules.',
-    role: 'Front-end developer',
-    focus: 'Medication reminders and adherence tracking',
-    tech: ['Next.js', 'Firebase', 'Redux', 'PostgreSQL', 'Prisma'],
-    github: 'https://github.com/krsrcio/rxguard',
-    image: '/RXGUARD.png',
-    imageAlt: 'RxGuard application logo',
-  },
-];
 
 export function Projects() {
   const ref = useRef<HTMLElement | null>(null);
@@ -82,6 +17,18 @@ export function Projects() {
   return (
     <section id="projects" ref={ref} className="flex min-h-screen items-center bg-neutral-50 px-5 py-20 sm:px-6 sm:py-24">
       <div className="max-w-6xl mx-auto w-full">
+        <section id="solo-projects" className="mb-20 border-b border-neutral-200 pb-12 sm:mb-24 sm:pb-16">
+          <p className="text-sm tracking-[0.3em] uppercase text-neutral-400">INDEPENDENT WORK</p>
+          <div className="mt-4 max-w-2xl">
+            <h2 className="text-4xl leading-[1.05] tracking-tight text-black md:text-6xl" style={{ fontWeight: 700 }}>
+              Solo projects.
+            </h2>
+            <p className="mt-5 leading-relaxed text-neutral-600">
+              A space for projects I build independently, from the first idea to the final detail.
+            </p>
+          </div>
+        </section>
+
         <motion.div
           initial={shouldAnimate ? { opacity: 0, y: 40 } : false}
           animate={shouldAnimate && isInView ? { opacity: 1, y: 0 } : undefined}
@@ -102,6 +49,7 @@ export function Projects() {
           {projects.map((project) => (
             <motion.article
               key={project.title}
+              id={`project-${project.demo}`}
               initial={shouldAnimate ? { opacity: 0, y: 28 } : false}
               whileInView={shouldAnimate ? { opacity: 1, y: 0 } : undefined}
               transition={
@@ -110,7 +58,7 @@ export function Projects() {
                   : undefined
               }
               viewport={{ once: true, amount: 0.15 }}
-              className="group border border-neutral-200 bg-white p-6 transition-colors duration-300 hover:border-black motion-reduce:transition-none sm:p-8 md:p-10"
+              className="group scroll-mt-24 border border-neutral-200 bg-white p-6 transition-colors duration-300 hover:border-black motion-reduce:transition-none sm:p-8 md:p-10"
             >
               <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
                 <div className="min-w-0 flex-1">
@@ -147,18 +95,27 @@ export function Projects() {
                       </div>
                     </dl>
                   </ExpandDetails>
-                  {project.github && (
+                  <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
                     <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-neutral-700 transition-colors duration-300 hover:text-black motion-reduce:transition-none"
+                      href={`#/projects/${project.demo}`}
+                      className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black motion-reduce:transition-none"
                     >
-                      <Github size={18} aria-hidden="true" />
-                      View code
-                      <ArrowUpRight size={16} aria-hidden="true" />
+                      <Play size={16} fill="currentColor" aria-hidden="true" />
+                      View live page
                     </a>
-                  )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-neutral-700 transition-colors duration-300 hover:text-black motion-reduce:transition-none"
+                      >
+                        <Github size={18} aria-hidden="true" />
+                        View code
+                        <ArrowUpRight size={16} aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 {project.image && project.imageAlt && (
                   <figure

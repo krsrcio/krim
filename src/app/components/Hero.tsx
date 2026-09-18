@@ -70,6 +70,8 @@ export function Hero() {
                 <span>SOFTWARE DEVELOPER</span>
                 <span>GAME DEVELOPER</span>
                 <span>MOBILE DEVELOPER</span>
+                <span>WEB DEVELOPER</span>
+                <span>FRONTEND DEVELOPER</span>
               </TextLoop>
             </>
           )}

@@ -1,5 +1,22 @@
-node_modules
-dist
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.vite/
+
+# Local environment files (keep shareable examples)
 .env
-.vercel
-    
+.env.*
+!.env.example
+!.env.*.example
+*.local
+
+# Deployment metadata and logs
+.vercel/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
