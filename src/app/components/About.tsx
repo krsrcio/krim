@@ -75,8 +75,34 @@ export function About() {
           </motion.a>
         </motion.div>
 
-        <div className="grid gap-12 md:grid-cols-2 md:gap-20">
-          <motion.div {...leftColumnRevealProps}>
+        <div className="grid items-start gap-10 md:grid-cols-[15rem_minmax(0,1fr)] md:gap-12 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-20">
+          <motion.figure
+            {...leftColumnRevealProps}
+            className="mx-auto w-full max-w-[17rem] md:mx-0"
+          >
+            <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-2">
+              <img
+                src="/kristine-castres.jpg"
+                alt="Portrait of Kristine Castres"
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
+                className="aspect-square w-full rounded-xl object-cover"
+              />
+            </div>
+            <figcaption className="mt-5 text-center md:text-left">
+              <p className="text-xl font-semibold tracking-tight text-black">
+                Kristine Castres
+              </p>
+              <p className="mt-1 text-sm text-neutral-500">
+                Information Technology student
+              </p>
+              <p className="mt-1 text-sm text-neutral-500">PHINMA University of Pangasinan</p>
+            </figcaption>
+          </motion.figure>
+
+          <motion.div {...rightColumnRevealProps}>
             <p className="mb-6 text-lg leading-relaxed text-neutral-700">
               I&apos;m an Information Technology student at PHINMA University of Pangasinan (UPANG) who enjoys turning
               ideas into practical web, mobile, and game experiences. I combine
@@ -95,48 +121,47 @@ export function About() {
               projects that solve everyday problems and create memorable user
               experiences.
             </p>
-          </motion.div>
+            <div className="mt-8 grid gap-8 border-t border-neutral-200 pt-8 xl:grid-cols-2">
+              <div>
+                <h3
+                  className="mb-3 text-xl tracking-tight text-black"
+                  style={{ fontWeight: 600 }}
+                >
+                  Focus Areas
+                </h3>
+                <ul className="space-y-2 text-neutral-600">
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                    Front-End & Full-Stack Development
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                    UI/UX Design & Prototyping
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                    Mobile & Game Development
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                    AI-Assisted Mobile Experiences
+                  </li>
+                </ul>
+              </div>
 
-          <motion.div {...rightColumnRevealProps} className="space-y-8">
-            <div>
-              <h3
-                className="mb-3 text-xl tracking-tight text-black"
-                style={{ fontWeight: 600 }}
-              >
-                Focus Areas
-              </h3>
-              <ul className="space-y-2 text-neutral-600">
-                <li className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  Front-End & Full-Stack Development
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  UI/UX Design & Prototyping
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  Mobile & Game Development
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
-                  AI-Assisted Mobile Experiences
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3
-                className="mb-3 text-xl tracking-tight text-black"
-                style={{ fontWeight: 600 }}
-              >
-                Currently Learning
-              </h3>
-              <p className="leading-relaxed text-neutral-600">
-                Deepening my practice with React and Next.js, mobile app
-                architecture, and Unity gameplay systems through hands-on
-                portfolio projects.
-              </p>
+              <div>
+                <h3
+                  className="mb-3 text-xl tracking-tight text-black"
+                  style={{ fontWeight: 600 }}
+                >
+                  Currently Learning
+                </h3>
+                <p className="leading-relaxed text-neutral-600">
+                  Deepening my practice with React and Next.js, mobile app
+                  architecture, and Unity gameplay systems through hands-on
+                  portfolio projects.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
