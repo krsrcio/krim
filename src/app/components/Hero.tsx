@@ -116,7 +116,7 @@ export function Hero() {
             <ArrowDown size={17} aria-hidden="true" />
           </a>
           <a
-            href="public/CV_Castres.pdf"
+            href="/CV_Castres.pdf"
             download
             className="inline-flex min-h-12 items-center justify-center gap-2 border border-neutral-300 bg-white px-6 py-3 text-sm font-medium text-black transition-colors duration-300 hover:border-black hover:bg-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black motion-reduce:transition-none"
           >
