@@ -65,7 +65,7 @@ export function About() {
                   animate: isInView ? { opacity: 1, y: 0 } : {},
                   transition: { delay: 0.15, duration: 0.45, ease: smoothEase },
                 })}
-            href="/Kristine Castres.pdf"
+            href="/CV_Castres.pdf"
             download
             className="inline-flex items-center gap-2 border border-neutral-300 bg-white/70 px-5 py-3 text-sm uppercase tracking-[0.16em] text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-[transform,border-color,color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-black hover:text-black hover:shadow-[0_14px_30px_rgba(0,0,0,0.18)] sm:tracking-[0.2em]"
             aria-label="Download resume"
